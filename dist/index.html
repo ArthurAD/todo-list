@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="index.css">
+  <title>TODO list</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="task task_header">
+      <div class="task__done"></div>
+      <div class="task__date">created</div>
+      <div class="task__date">expires</div>
+      <div class="task__type">type</div>
+      <div class="task__name">task name</div>
+    </div>
+    <div class="tasks"></div>
+
+    <div class="new-task">
+      <label class="new-task__item">
+        Task name
+        <input class="new-task_input new-task__name" type="text">
+      </label>
+      <label class="new-task__item">type <select class="new-task_input new-task__type"></select></label>
+      <label class="new-task__item">
+        expired date
+        <input class="new-task_input new-task__date" type="date">
+      </label>
+      <label class="new-task__item">
+        expired time
+        <input class="new-task_input new-task__time" type="text" placeholder="hh:mm:ss">
+      </label>
+      <i class="new-task__add fa fa-plus-square"></i>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
