@@ -4,7 +4,7 @@ import { generateIdObject } from './utils/helpers';
 
 class TodoList {
   constructor(todos, types) {
-    this.addTypes(types);
+    TodoList.addTypes(types);
 
     this.todos = todos;
     this.types = generateIdObject(types);
@@ -15,7 +15,7 @@ class TodoList {
     this.addNewTaskEvents();
   }
 
-  addTypes(types) {
+  static addTypes(types) {
     document.querySelector('.new-task__type').innerHTML = types.map(
       t => `<option value="${t.id}">${t.name}</option>`,
     ).join('');
@@ -45,7 +45,7 @@ class TodoList {
     const taskTime = newTask.querySelector('.new-task__time');
 
     addTask.addEventListener('click', () => {
-      const date = taskDate.value || getStringOfCurrentDate();
+      const date = (taskDate.value || getStringOfCurrentDate()).replace(/-/g, '/');
       const time = taskTime.value || '00:00:00';
 
       this.todos.push({
@@ -68,7 +68,7 @@ class TodoList {
     taskTime.addEventListener('change', () => {
       const val = taskTime.value;
 
-      if (/\d\d?:\d\d?:\d\d?/.test(val)) {
+      if (/^\d\d?:\d\d?:\d\d?$/.test(val)) {
         const parts = val.split(':');
         const h = parts[0] > 23 ? 23 : parts[0];
         const m = parts[1] > 59 ? 59 : parts[1];
@@ -77,6 +77,13 @@ class TodoList {
         return;
       }
       taskTime.value = '';
+    });
+
+    taskDate.addEventListener('change', () => {
+      const val = taskDate.value;
+      if (!/^\d{4}-\d\d?-\d\d?$/.test(val)) {
+        taskDate.value = '';
+      }
     });
   }
 

@@ -32,5 +32,5 @@ module.exports = merge({
       minimize: true,
     }),
   ],
-  devtool: "source-map"
+  devtool: 'source-map',
 }, baseWebpackConfig);
