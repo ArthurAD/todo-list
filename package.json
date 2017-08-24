@@ -7,7 +7,8 @@
     "test": "mocha --compilers js:babel-core/register --recursive tests/",
     "dev": "node server.js",
     "lint": "eslint --fix .",
-    "build": "webpack --config ./config/webpack.prod.conf"
+    "build": "webpack --config ./config/webpack.prod.conf",
+    "precommit": "npm run lint && npm test"
   },
   "keywords": [],
   "author": "ArthurAD",
@@ -22,6 +23,7 @@
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-import": "^2.7.0",
     "express": "^4.15.4",
+    "husky": "^0.14.3",
     "mocha": "^3.5.0",
     "webpack": "^3.5.5",
     "webpack-dev-middleware": "^1.12.0",
